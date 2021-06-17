@@ -19,5 +19,6 @@ router.post(`/employees/:id/edit`, Controller.PostEditEmployees) //update
 router.get(`/employees/:id/delete`, Controller.deleteEmployees) //delete
 
 
+router.get(`/days`, Controller.getDays)
 
 module.exports = router

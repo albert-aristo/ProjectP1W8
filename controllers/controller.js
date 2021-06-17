@@ -110,6 +110,17 @@ class Controller {
             res.send(err)
         })
     }
+
+    static getDays(req, res){
+        Day.findAll({include:Employee})
+        .then((data)=>{
+            console.log(data[0].Employee.name);
+            res.render(`days`, {data})
+        })
+        .catch((err)=>{
+            res.send(err)
+        })
+    }
 }
 
 
