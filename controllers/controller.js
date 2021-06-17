@@ -110,6 +110,23 @@ class Controller {
         })
     }
 
+    // static getDays(req, res){
+    //     let output = []
+    //     Day.findAll({include:Employee})
+    //     .then((data)=>{
+    //         for(let employee of data){
+    //             employee.dataValues.Employee = employee.dataValues.Employee.dataValues
+    //             employee.dataValues.date = employee.dataValues.date.toDateString()
+    //             output.push(employee.dataValues)
+    //         }
+    //         res.render(`days`, {output})
+    //     })
+    //     .catch((err)=>{
+    //         res.send(err)
+    //     })
+    // }
+
+    // Cobain distinct values
     static getDays(req, res){
         let output = []
         Day.findAll({include:Employee})
@@ -125,6 +142,7 @@ class Controller {
             res.send(err)
         })
     }
+
 
     static addDays(req,res){
         Employee.findAll()
