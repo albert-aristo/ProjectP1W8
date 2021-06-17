@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+        border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Tanggal</th>
+            <!-- tanggal nya itu semua item,transaksi itu perhari -->
+            <th>Item</th>
+            <!-- item apa saja yang terjual,seperti nama nya -->
+            <th>unit Terjual</th>
+            <!-- total unit yang terjual-->
+            <th>Harga</th>
+            <!-- harga jual item -->
+            <th>Total Nilai Penjualan</th>
+            <!-- total nilai penjualan dari semua item itu -->
+             <th>Edit</th>
+            <!-- bisa dapat akses untuk ubah data yang ada  -->
+        </tr>
+        <% for(let transaksi of output){ %>
+        <tr>
+            <td><%= transaksi.Day.date.toDateString() %></td>
+            <td><%= transaksi.Item.name %></td>
+            <td><%= transaksi.Item.stock %></td>
+            <td>Rp <%= transaksi.Item.price %></td>
+            <td>Rp <%= transaksi.Item.price * transaksi.Item.stock %></td>
+            <td><a href="transaction/<%= transaksi.id%>/edit">Edit</a></td>
+        </tr>
+        <% } %>
+    </table>
+</body>
+</html>
