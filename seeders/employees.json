@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Viki Yaputra",
+        "salary": 1000000,
+        "position": "Head Chef",
+        "start_date": "2021-06-15T03:44:48.267Z"
+    }, 
+    {
+        "name": "Diana Wangsaputri",
+        "salary": 100000000,
+        "position": "Owner",
+        "start_date": "2021-06-15T03:44:48.267Z"
+    }
+]

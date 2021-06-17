@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Add new item...</h2>
+
+    <form action="/items/<%= data[0].id %>/edit " method= "POST">
+        <label for="name">Item name:</label><br>
+        <input type="text" id="name" name="name" value = "<%= data[0].name %> "><br>
+        <label for="description">Item description:</label><br>
+        <input type="text" id="description" name="description" value = "<%= data[0].description %> "><br>
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price" value = <%= data[0].price %> ><br>
+        <label for="stock">Stock:</label><br>
+        <input type="number" id="stock" name="stock" value = <%= data[0].stock %> ><br><br>
+        <input type="submit" value="Update">
+      </form> 
+</body>
+</html>

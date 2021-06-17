@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "PStr!n9/P",
+    "database": "p1w8 pair prgramming pos system",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
