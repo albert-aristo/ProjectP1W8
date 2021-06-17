@@ -135,7 +135,7 @@ class Controller {
             res.send(err)
         })
     }
-
+//
     static PostAddDays(req,res){
         let input = req.body
         let output = []
