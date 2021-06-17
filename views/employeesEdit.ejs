@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/employees/<%=data[0].id%>/edit" method="post">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= data[0].name %>">    
+        <br>
+        <label>Salary</label>
+        <input type="number" name="salary" value="<%= data[0].salary %>">    
+        <br>
+        <label>Position</label>
+        <input type="text" name="position" value="<%= data[0].position %>">
+        <br>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

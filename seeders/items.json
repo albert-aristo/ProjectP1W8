@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Kue Bolu",
+        "description": "Khas Surabaya",
+        "price": 50000,
+        "stock": 5
+    }, 
+    {
+        "name": "Sosis Brood",
+        "description": "Khas Malang",
+        "price": 30000,
+        "stock": 10
+    }
+]

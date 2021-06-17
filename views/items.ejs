@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+    <h2>List of Items</h2>
+    <a href="/items/add">Add new Item</a>
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Stock</th>
+        </tr>
+        <% data.forEach(item=>{ %>        
+            <tr>
+              <td><%= item.name %> </td>
+              <td><%= item.description %></td>
+              <td><%= item.formatPrice %></td>
+              <td><%= item.stock %></td>
+              <td><a href="/items/<%= item.id %>/edit">Edit</a> || <a href="/items/<%= item.id %>/delete" onclick="return confirm(`Are you sure you want to delete?`)">Delete</a></td>
+            </tr>
+        <% }) %> 
+      </table>
+</body>
+</html>
