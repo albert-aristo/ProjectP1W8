@@ -4,7 +4,6 @@ class Controller {
     static getItems(req, res){
         Item.findAll()
         .then((data)=>{
-            // res.send(`ahahha`)
             res.render(`items`, {data})
         })
         .catch((err)=>{
@@ -112,12 +111,43 @@ class Controller {
     }
 
     static getDays(req, res){
+        let output = []
         Day.findAll({include:Employee})
         .then((data)=>{
-            console.log(data[0].Employee.name);
-            res.render(`days`, {data})
+            for(let employee of data){
+                employee.dataValues.Employee = employee.dataValues.Employee.dataValues
+                employee.dataValues.date = employee.dataValues.date.toDateString()
+                output.push(employee.dataValues)
+            }
+            res.render(`days`, {output})
         })
         .catch((err)=>{
+            res.send(err)
+        })
+    }
+
+    static addDays(req,res){
+        Employee.findAll()
+        .then( (result) => {
+            res.render('addDays', {result})
+        })
+        .catch( (err) => {
+            res.send(err)
+        })
+    }
+
+    static PostAddDays(req,res){
+        let input = req.body
+        let output = []
+        for(let a = 0; a < input.name.length; a++){
+            output.push({date: new Date(input.date), EmployeeId: Number(input.name[a])})
+        }
+        console.log(output);
+        Day.bulkCreate(output)
+        .then( () =>{
+            res.redirect('/days')
+        })
+        .catch( (err) =>{
             res.send(err)
         })
     }
