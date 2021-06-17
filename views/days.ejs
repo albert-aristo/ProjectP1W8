@@ -24,7 +24,7 @@
         </style>
 </head>
 <body>
-    <h2>Jadwal Hari kerja</h2>
+    <h2>Tambah Jadwal</h2>
     <a href="/days/add">Add new day</a>
     <table>
         <tr>
@@ -32,11 +32,11 @@
           <th>Employee yang hadir</th>
           <th>Action</th>
         </tr>
-        <% output.forEach(day=>{ %>        
+        <% data.forEach(day=>{ %>        
             <tr>
               <td><%= day.date %> </td>
-              <td><%= day.Employee.name %></td>
-              <td><a href="/employees/add">Tambahkan Karyawan</a></td>
+              <td><%= day.COUNT %></td>
+              <td><a href="/days/add/<%= day.date.id %>">Jadwalkan Karyawan</a></td>
             </tr>
         <% }) %> 
       </table>
