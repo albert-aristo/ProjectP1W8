@@ -151,7 +151,6 @@ class Controller {
             res.send(err)
         })
     }
-    // console.log('');
 }
 
 
