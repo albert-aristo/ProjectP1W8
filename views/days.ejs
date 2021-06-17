@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+    <h2>Jadwal Hari kerja</h2>
+    <a href="">Add new day</a>
+    <table>
+        <tr>
+          <th>Date</th>
+          <th>Employee yang hadir</th>
+          <th>Action</th>
+        </tr>
+        <% data.forEach(day=>{ %>        
+            <tr>
+              <td><%= day.date %> </td>
+              <td><%= day.Employee.name %></td>
+              <td><a href="">Tambahkan Karyawan</a></td>
+            </tr>
+        <% }) %> 
+      </table>
+</body>
+</html>
