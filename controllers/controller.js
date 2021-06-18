@@ -111,6 +111,7 @@ class Controller {
         })
     }
 
+
     // static getDays(req, res){
     //     let output = []
     //     Day.findAll({include:Employee})
@@ -128,6 +129,10 @@ class Controller {
     // }
 
     // Cobain distinct values
+
+
+//days
+
     static getDays(req, res){
         // Day.findAll({include:Employee, group:[`date`]})
         // Day.aggregate(`date`, `DISTINCT`, { plain: false }) // ini udah bisa dapetin array of 2 distinct object
@@ -172,7 +177,6 @@ class Controller {
         for(let a = 0; a < input.name.length; a++){
             output.push({date: new Date(input.date), EmployeeId: Number(input.name[a])})
         }
-        console.log(output);
         Day.bulkCreate(output)
         .then( () =>{
             res.redirect('/days')
@@ -182,6 +186,7 @@ class Controller {
         })
     }
 
+
     static editDay(req, res){
         Day.findAll({where:{id:req.params.id}})
         .then((data)=>{
@@ -189,12 +194,92 @@ class Controller {
             res.render(`editDay`, {data})
         })
         .catch((err)=>{
+          res.send(err)
+        })
+    }
+
+ //begitu editDay, pengenya di lembah editDay, sudah ada nama yang di centang. dan kalau di uncentang, dia akan nge destroy, tapi tidak tau caranya gimana
+  
+//transactions
+    static transaksi(req,res){
+        let output = []
+        Transaction.findAll({include:[Item,Day]})
+        .then( (result) => {
+            for(let isi of result){
+                isi.dataValues.Item = isi.dataValues.Item.dataValues
+                isi.dataValues.Day = isi.dataValues.Day.dataValues
+                output.push(isi.dataValues)
+            }
+            res.render('transaction', {output})
+        })
+        .catch( (err) =>{
             res.send(err)
         })
     }
 
-    //begitu editDay, pengenya di lembah editDay, sudah ada nama yang di centang. dan kalau di uncentang, dia akan nge destroy, tapi tidak tau caranya gimana
+
+ 
     
+
+    static tambahTransaksi(req,res){
+        let output = []
+        Item.findAll()
+        .then( (result) =>{
+            for(let item of result){
+                item.dataValues.Employee = []
+                output.push(item.dataValues)
+            }
+            return Day.findAll({include: Employee})
+        })
+        .then( (hasil) =>{
+            for(let unit of hasil){
+                unit = unit.dataValues
+                unit.Employee = unit.Employee.dataValues
+                console.log(unit);
+                // console.log(unit.dataValues);
+                // console.log(unit.dataValues.Employee.dataValues);
+            }
+            console.log(output);
+            console.log('==========================');
+            // console.log(hasil);
+        })
+        .catch( (err) => {
+            res.send(err)
+        })
+    }
+
+    static editTransaksi(req,res){
+        let output = {}
+        Transaction.findAll({include:[Item,Day], where: {id : Number(req.params.id)}})
+        .then( (result) => {
+            output = result[0].dataValues
+            output.Item = output.Item.dataValues
+            output.Day = output.Day.dataValues
+            output.Karyawan = []
+            return Employee.findAll()
+        })
+        .then( (hasil) =>{
+            for(let unit of hasil){
+                output.Karyawan.push(unit.dataValues)
+            }
+            res.render('editTransaksi', output)
+        })
+        .catch( (err) =>{
+            res.send(err)
+        })
+    }
+    
+    static postEditTransaksi(req,res){
+        let input = req.body
+        Item.update({name:input.item,price:input.harga,stock: input.stock},{where:{id:req.params.id}})
+        Day.update({date: input.tanggal.toISOString},{where:{id: req.params.id}})
+        .then( () =>{
+            res.redirect('/transaction')
+        })
+        .catch( (err)=>{
+            res.send(err)
+        })
+    }
 }
 
 
