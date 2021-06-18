@@ -22,6 +22,8 @@ router.get(`/employees/:id/delete`, Controller.deleteEmployees)
 router.get(`/days`, Controller.getDays)
 router.get(`/days/add`, Controller.addDays)
 router.post(`/days/add`, Controller.PostAddDays)
+router.get(`/days/add/:id`, Controller.editDay)
+
 
 router.get('/transaction', Controller.transaksi)
 // router.get('/transaction/add', Controller)

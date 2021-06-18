@@ -13,8 +13,8 @@
         <input type="date" name= "date" value="">
         <br>
         <h2>karyawan yang hadir</h2>
-        <% for(let karyawan of result){ %>
-        <input type="checkbox" name='name' value="<%=karyawan.id %>"> <%=karyawan.name %> <br>
+        <% for(let karyawan of data){ %>
+        <input type="checkbox" name='name' value="<%=karyawan.id %>" checked> <%=karyawan.name %> <br>
         <% } %>
         <button>Submit</button>
     </form>
