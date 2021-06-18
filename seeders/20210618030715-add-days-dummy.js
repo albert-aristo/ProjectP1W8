@@ -2,10 +2,10 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Transactions',[{
-      ItemId:1,DateId: 1,createdAt: new Date(),updatedAt: new Date()
+    await queryInterface.bulkInsert('Days',[{
+      date:new Date(),EmployeeId: 1,createdAt: new Date(),updatedAt: new Date()
     },{
-      ItemId:2,DateId: 2,createdAt: new Date(),updatedAt: new Date()
+      date:new Date(),EmployeeId: 2,createdAt: new Date(),updatedAt: new Date()
     }])
     /**
      * Add seed commands here.
@@ -19,7 +19,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Transactions',null,{})
+    await queryInterface.bulkDelete('Days',null,{})
     /**
      * Add commands to revert seed here.
      *

@@ -11,7 +11,7 @@
     <a href="/employees/add">Add Employee</a>
     <ul>
         <% data.forEach(employee=>{ %>        
-            <li><%=employee.name%> <a href="/employees/<%=employee.id%>/delete">Delete</a></li>
+            <li><%=employee.name%><a href="/employees/<%=employee.id%>/edit">Edit</a> || <a href="/employees/<%=employee.id%>/delete">Delete</a></li>
         <% }) %> 
     </ul>
 </body>

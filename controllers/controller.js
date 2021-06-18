@@ -271,6 +271,7 @@ class Controller {
     
     static postEditTransaksi(req,res){
         let input = req.body
+        console.log(input);
         Item.update({name:input.item,price:input.harga,stock: input.stock},{where:{id:req.params.id}})
         Day.update({date: input.tanggal.toISOString},{where:{id: req.params.id}})
         .then( () =>{
